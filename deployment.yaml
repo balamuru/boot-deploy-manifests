@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: cd-example
-          image: vinaybalamuru/boot-deploy:latest
+          image: vinaybalamuru/boot-deploy:1.31.0
           livenessProbe:
             httpGet:
               port: 9000

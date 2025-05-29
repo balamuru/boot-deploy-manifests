@@ -6,4 +6,4 @@ resources:
 images:
   - name: vinaybalamuru/boot-deploy
     newName: vinaybalamuru/boot-deploy
-    newTag: latest
+    newTag: 1.31.0
