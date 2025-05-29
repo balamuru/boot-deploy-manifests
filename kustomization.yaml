@@ -5,4 +5,5 @@ resources:
   - node-port.yaml
 images:
   - name: vinaybalamuru/boot-deploy
+    newName: vinaybalamuru/boot-deploy
     newTag: 1.32.0
