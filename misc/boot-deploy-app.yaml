@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: boot-deploy
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: app=vinaybalamuru/boot-deploy
+    argocd-image-updater.argoproj.io/app.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/git-branch: main
+    argocd-image-updater.argoproj.io/write-back-target: kustomization
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/balamuru/boot-deploy-manifests.git
+    targetRevision: main
+    path: .
+    kustomize:
+      namePrefix: argocd-  # Optional: Adds a prefix to resource names
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
